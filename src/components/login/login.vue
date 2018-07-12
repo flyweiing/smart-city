@@ -3,15 +3,15 @@
 </style>
 
 <template>
-  <div class="login">
+  <div class="login" @keyup.enter="handleLogin">
     <img class="login-title1" src="../../images/bg_title.png" alt="">
     <img class="login-title2" src="../../images/bg_title1.png" alt="">
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
       <el-form-item prop="username">
-        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="请输入用户名"/>
+        <el-input class="username" name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="请输入用户名"/>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input name="password" :type="pwdType" v-model="loginForm.password" @keyup.enter.native="handleLogin" autoComplete="on" placeholder="请输入密码"></el-input>
+        <el-input class="password" name="password" :type="pwdType" v-model="loginForm.password" @keyup.enter.native="handleLogin" autoComplete="on" placeholder="请输入密码"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" :loading="loading" @click.native.prevent="handleLogin">登  录</el-button>
