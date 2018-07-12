@@ -1,21 +1,23 @@
+<style lang="less">
+  @import './login.less';
+</style>
+
 <template>
-  <div class="login-container">
+  <div class="login">
+    <img class="login-title1" src="../../images/bg_title.png" alt="">
+    <img class="login-title2" src="../../images/bg_title1.png" alt="">
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
-      <h3 class="title">洲明光环境管理平台</h3>
       <el-form-item prop="username">
-        <span class="svg-container svg-container_login"></span>
-        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="username" />
+        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="请输入用户名"/>
       </el-form-item>
       <el-form-item prop="password">
-        <span class="svg-container"></span>
-        <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="password"></el-input>
+        <el-input name="password" :type="pwdType" v-model="loginForm.password" @keyup.enter.native="handleLogin" autoComplete="on" placeholder="请输入密码"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
-          登  录
-        </el-button>
+        <el-button type="primary" :loading="loading" @click.native.prevent="handleLogin">登  录</el-button>
       </el-form-item>
     </el-form>
+    <img class="login-footer" src="../../images/bg_title2.png" alt="">
   </div>
 </template>
 
@@ -42,11 +44,11 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: 'admin'
+        password: ''
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePass }]
+        username: [{required: true, trigger: 'blur', validator: validateUsername}],
+        password: [{required: true, trigger: 'blur', validator: validatePass}]
       },
       loading: false,
       pwdType: 'password'
@@ -59,7 +61,7 @@ export default {
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
-            this.$router.push({ path: '/' })
+            this.$router.push({path: '/'})
           }).catch(() => {
             this.loading = false
           })
