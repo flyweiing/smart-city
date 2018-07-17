@@ -8,6 +8,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './app'
 import router from './router'
 
+import '@/permission' // permission control
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
