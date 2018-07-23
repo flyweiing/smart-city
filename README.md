@@ -1,6 +1,6 @@
-# smart-city
+# v-demo
 
-> 洲明智慧城市之光环境管理
+> 个人demo
 
 ## Build Setup
 
